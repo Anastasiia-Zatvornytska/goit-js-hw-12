@@ -112,6 +112,8 @@
   width: 360px;
   height: 200px;
   overflow: hidden;
+  border: 1px solid #ccc;
+    
 }
 
 .gallery-image {
@@ -145,6 +147,13 @@
 .load-more {
   display: none;
   margin: 32px auto;
+  width: 125px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4e75ff;
+    color: #fff;
+    cursor: pointer;
 }
 
 .load-more.is-visible {
