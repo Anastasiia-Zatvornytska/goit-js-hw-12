@@ -50,7 +50,7 @@ form.addEventListener("submit", async event => {
   iziToast.info({
     message: "We're sorry, but you've reached the end of search results.",
   });
-}
+} 
 
   input.value = "";
   createGallery(data.hits);
@@ -69,6 +69,7 @@ form.addEventListener("submit", async event => {
 loadMoreButton.addEventListener("click", async event => {
   page += 1;
   showLoader();
+  hideLoadMoreButton();
 
   try {
     const data = await getImagesByQuery(query, page);
@@ -85,6 +86,8 @@ loadMoreButton.addEventListener("click", async event => {
   iziToast.info({
     message: "We're sorry, but you've reached the end of search results.",
   });
+} else {
+  showLoadMoreButton();
 }
 
    } catch (error) {
