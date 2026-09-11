@@ -7,12 +7,146 @@
 /* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+
+.loader {
+  --color-1: #F1A23F;
+  --color-2: #A22873;
+  --size: 1px;
+
+  width: calc(48 * var(--size));
+  height: calc(48 * var(--size));
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+}
+
+.loader::before,
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: calc(5 * var(--size)) solid var(--color-1);
+  animation: prixClipFix 2s linear infinite;
+}
+
+.loader::after {
+  border-color: var(--color-2);
+  animation:
+    prixClipFix 2s linear infinite,
+    rotate 0.5s linear infinite reverse;
+  inset: calc(6 * var(--size));
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 36px auto;
+
+}
+
+.form input {
+  width: 272px;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.form button {
+  width: 91px;
+  height: 40px;
+  border: none;
+  background-color: #4e75ff;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 360px);
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.gallery-item {
+  width: 360px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.gallery-image {
+  display: block;
+  width: 360px;
+  height: 152px;
+  object-fit: cover;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 48px;
+  background-color: white;
+  text-align: center;
+}
+
+.info p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.loader {
+  display: block;
+  margin: 0 auto;
+}
+
+.load-more {
+  display: none;
+  margin: 32px auto;
+}
+
+.load-more.is-visible {
+  display: block;
+}
